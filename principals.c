@@ -24,9 +24,12 @@ struct principals_data * get_principals(char * string) {
 	
 	columnString = malloc(256);
 	
+	/*filename = malloc(strlen(string) + strlen("/title.principals.small.tsv") + 1);*/
 	filename = malloc(strlen(string) + strlen("/title.principals.small.tsv") + 1);
+
 	
 	strcpy(filename, string);
+	/*strcat(filename, "/title.principals.small.tsv");*/
 	strcat(filename, "/title.principals.small.tsv");
 		
 	fp = fopen(filename, "r+");
@@ -81,6 +84,17 @@ struct principals_data * get_principals(char * string) {
 	returnData->length = principalsCount;
 	returnData->tconst_tree = 0;
 	returnData->nconst_tree = 0;
+
+	/*printf("\nprincipals data:\n\n");
+	printf("length: %d\n", returnData->length);
+
+	int i = 0;
+	for (i = 0; i < returnData->length; i++) {
+		printf("%s\n", returnData->principals_basics_ptr[i].nconst);
+		printf("%s\n", returnData->principals_basics_ptr[i].tconst);
+		printf("%s\n", returnData->principals_basics_ptr[i].characters);
+	}
+	*/
 	
 	fclose(fp);
 	free(filename);
@@ -97,6 +111,11 @@ void build_ptindex(struct principals_data * principalsData) {
 		
 	for (i = 0; i<principalsData->length; i++) {
 		
+		/*printf("ADDING NODE ptindex:\n");
+		printf("charcters: %s\n", (&(principalsData->principals_basics_ptr[i]))->characters);
+		printf("nconst: %s\n", (&(principalsData->principals_basics_ptr[i]))->nconst);
+		printf("tconst: %s\n", (&(principalsData->principals_basics_ptr[i]))->tconst);
+		printf("%s\n", principalsData->principals_basics_ptr[i].tconst);*/
 		add_node(&(principalsData->tconst_tree), principalsData->principals_basics_ptr[i].tconst, (void *)(&(principalsData->principals_basics_ptr[i])));
 		
 	}
@@ -123,9 +142,15 @@ struct tree * find_ptconst_list(struct principals_data * principalsData, char * 
 void build_pnindex(struct principals_data * principalsData) {
 	
 	int i;
+
+	
 		
 	for (i = 0; i<principalsData->length; i++) {
-		
+		/*printf("ADDING NODE pnindex:\n");
+		printf("charcters: %s\n", (&(principalsData->principals_basics_ptr[i]))->characters);
+		printf("nconst: %s\n", (&(principalsData->principals_basics_ptr[i]))->nconst);
+		printf("tconst: %s\n", (&(principalsData->principals_basics_ptr[i]))->tconst);
+		printf("%s\n", principalsData->principals_basics_ptr[i].tconst);*/
 		add_node(&(principalsData->nconst_tree), principalsData->principals_basics_ptr[i].nconst, (void *)(&(principalsData->principals_basics_ptr[i])));
 		
 	}
@@ -147,5 +172,4 @@ struct tree * find_pnconst_list(struct principals_data * principalsData, char * 
 	return returnTree;
 		
 }
-
 

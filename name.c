@@ -24,9 +24,12 @@ struct name_data * get_name(char * string) {
 	
 	columnString = malloc(256);
 	
+	/*filename = malloc(strlen(string) + strlen("/name.basics.small.tsv") + 1);*/
 	filename = malloc(strlen(string) + strlen("/name.basics.small.tsv") + 1);
+
 	
 	strcpy(filename, string);
+	/*strcat(filename, "/name.basics.small.tsv");*/
 	strcat(filename, "/name.basics.small.tsv");
 		
 	fp = fopen(filename, "r+");
@@ -73,6 +76,15 @@ struct name_data * get_name(char * string) {
 	returnData->length = actorCount;
 	returnData->nconst_tree = 0;
 	returnData->primaryName_tree = 0;
+
+	/*printf("\nname data:\n\n");
+	printf("length: %d\n", returnData->length);
+
+	int i = 0;
+	for (i = 0; i < returnData->length; i++) {
+		printf("%s\n", returnData->name_basics_ptr[i].nconst);
+		printf("%s\n", returnData->name_basics_ptr[i].primaryName);
+	}*/
 	
 	fclose(fp);
 	free(filename);

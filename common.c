@@ -13,7 +13,7 @@ void get_column(char * string, char * returnString, int columnNumber) {
 	int prevTabIndex = 0;
 	int tabIndex = 0;
 	int firstTabFound = 0;
-	printf("string, cn %d: %s\n", columnNumber, string);
+	/*printf("string, cn %d: %s", columnNumber, string);*/
 	columnNumber++;
 	length = strlen(string);
 	
@@ -58,7 +58,7 @@ void get_column(char * string, char * returnString, int columnNumber) {
 		returnString[i] = string[prevTabIndex + i];
 	}
 	
-	printf("%s\n", returnString);
+	/*printf("return string: %s\n\n", returnString);*/
 	
 }
 

@@ -24,9 +24,11 @@ struct title_data * get_title(char * string) {
 	
 	columnString = malloc(256);
 	
+	/*filename = malloc(strlen(string) + strlen("/title.basics.small.tsv") + 1);*/
 	filename = malloc(strlen(string) + strlen("/title.basics.small.tsv") + 1);
 	
 	strcpy(filename, string);
+	/*strcat(filename, "/title.basics.small.tsv");*/
 	strcat(filename, "/title.basics.small.tsv");
 		
 	fp = fopen(filename, "r+");
@@ -80,6 +82,15 @@ struct title_data * get_title(char * string) {
 	
 	fclose(fp);
 	free(filename);
+
+	/*printf("\ntitle data:\n\n");
+	printf("length: %d\n", returnData->length);
+
+	int i = 0;
+	for (i = 0; i < returnData->length; i++) {
+		printf("%s\n", returnData->title_basics_ptr[i].tconst);
+		printf("%s\n", returnData->title_basics_ptr[i].primaryTitle);
+	}*/
 		
 	return returnData;
 	
@@ -118,6 +129,11 @@ void build_tcindex(struct title_data * titleData) {
 
 struct title_basics * find_tconst(struct title_data * titleData, char * string) {
 		
+	/*printf("find tconst\n");
+	printf("string: %s\n", string);
+	printf("dataptr=%s\n", (char*)titleData->tconst_tree->dataPtr);
+	printf("keyptr=%s\n", titleData->tconst_tree->keyPtr);*/
+
 	return (struct title_basics*)find_node(titleData->tconst_tree, string);
 		
 }

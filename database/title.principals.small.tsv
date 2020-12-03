@@ -1,0 +1,9 @@
+tconst	ordering	nconst	category	job	characters
+tt0000001	1	nm0000001	actor	\N	["Captain America"]
+tt0000001	2	nm0000002	actor	\N	["Thor"]
+tt0000001	3	nm0000003	actor	director of photography	["Black Widow"]
+tt0000002	1	nm0000007	actor	\N	["Happy Hogan"]
+tt0000003	2	nm0000005	actor	producer	["John Wick"]
+tt0000003	3	nm0000004	actor	\N	["Aurelio"]
+tt0000001	5	nm0000006	actor	\N	["Korg"]
+tt0000004	4	nm0000006	actor	\N	["Imaginary Friend"]

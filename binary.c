@@ -50,13 +50,13 @@ void * find_node (struct tree * root, char * string) {
 		
 		if (strcmp(string, root->keyPtr) < 0) {
 			
-			/*printf("0 branch taken, %s < %s\n", key, (*root)->keyPtr);*/
+			/*printf("0 branch taken, %s < %s\n", string, (*root).keyPtr);*/
 			return find_node( root->children[0], string);
 			
 		}
 		else {
 			
-			/*printf("1 branch taken, %s > %s\n", key, (*root)->keyPtr);*/
+			/*printf("1 branch taken, %s > %s\n", string, (*root).keyPtr);*/
 			return find_node( root->children[1], string);
 			
 		}
@@ -64,6 +64,7 @@ void * find_node (struct tree * root, char * string) {
 	}
 	else {
 
+		/*printf("found node %s == %s\n", string, (*root).keyPtr);*/
 		return root->dataPtr;
 
 	}
@@ -72,6 +73,7 @@ void * find_node (struct tree * root, char * string) {
 	return NULL;
 	
 }
+
 
 struct tree * find_node_list (struct tree * root, char * string) {
 	
